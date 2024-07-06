@@ -4,6 +4,6 @@ RUN mvn clean package
 RUN mvn clean package -DskipTests
 
 FROM openjdk:17.0.1-jdk-slim
-COPY --form=build /target/Backend-3.3.1-SNAPSHOT.jar Backend.jar
+COPY --from=build /target/Backend-3.3.1-SNAPSHOT.jar Backend.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","Backend.jar"]
